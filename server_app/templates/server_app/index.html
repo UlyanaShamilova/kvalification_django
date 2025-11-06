@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with AI</title>
+    {% load static %}
+    <script src="{% static 'server_app/js/chat.js' %}"></script>
+</head>
+<body>
+    <input type="text" id="userInput" placeholder="Введите сообщение...">
+    <button onclick="handleSend()">Отправить</button>
+    <div id="chatLog"></div>
+
+<script>
+function handleSend() {
+    const input = document.getElementById('userInput');
+    sendMessage(input.value).then(reply => {
+        const chatLog = document.getElementById('chatLog');
+        chatLog.innerHTML += '<p><b>Вы:</b> ' + input.value + '</p>';
+        chatLog.innerHTML += '<p><b>ИИ:</b> ' + reply + '</p>';
+        input.value = '';
+    });
+}
+
+async function sendMessage(message) {
+  const response = await fetch('/chat/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message: message })
+  });
+  const data = await response.json();
+  console.log('Ответ ИИ:', data.reply);
+  return data.reply;
+}
+</script>
+</body>
+</html>

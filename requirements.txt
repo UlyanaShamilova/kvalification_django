@@ -1,0 +1,11 @@
+# Django>=5.2.8
+# djangorestframework>=3.16.1
+# cohere>=5.20.0
+# django-cors-headers>=4.9.0
+# gunicorn>=23.0.0
+
+Django
+djangorestframework
+cohere
+django-cors-headers
+gunicorn
