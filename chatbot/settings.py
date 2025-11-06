@@ -126,7 +126,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://your-aspnetcore-domain.com",
-    "http://localhost:5000",
+    "kvalificationwork-production.up.railway.app"
 ]
 CORS_ALLOW_ALL_ORIGINS = True
